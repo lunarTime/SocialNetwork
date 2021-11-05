@@ -1,0 +1,25 @@
+.frBlock {
+    text-align: center;
+}
+
+.imgFriend {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 30px;
+}
+
+.titleFriends {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.friend {
+    display: inline-block;
+    margin: 5px;
+}
+
+.friend span {
+    display: block;
+    text-align: center;
+}

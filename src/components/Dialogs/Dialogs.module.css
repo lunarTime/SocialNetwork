@@ -1,0 +1,16 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 1fr 0.1fr 5fr;
+    padding: 10px;
+}
+
+.line {
+    border-radius: revert;
+    border-left: 1px solid;
+    width: auto;
+}
+
+.names .active {
+    color: gold;
+}
+
