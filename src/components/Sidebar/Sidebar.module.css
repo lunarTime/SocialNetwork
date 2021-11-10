@@ -1,7 +1,9 @@
-.nav {
-    grid-area: nv;
+.sidebar {
+    display: grid;
+    grid-area: sb;
     background: linear-gradient(lightgreen, limegreen);
     padding: 20px;
+    align-content: center;
 }
 
 .item a {

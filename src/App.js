@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
+import Sidebar from "./components/Sidebar/Sidebar";
 import Profile from "./components/Profile/Posts/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
 import Music from "./components/Music/Music";
@@ -14,6 +15,7 @@ const App = (props) => {
             <div className='app-wrapper'>
                 <Header/>
                 <Navigation/>
+                <Sidebar/>
                 <div className='app-wrapper-content'>
                     <Route path="/profile" render={() => <Profile posts={props.state.profilePage.posts}/>}/>
                     <Route path="/dialogs" render={() => <Dialogs dialogsData={props.state.dialogsPage.dialogsData} msgData={props.state.dialogsPage.msgData}/>}/>

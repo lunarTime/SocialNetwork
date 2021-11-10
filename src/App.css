@@ -1,9 +1,9 @@
 .app-wrapper {
     display: grid;
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
+    grid-template-rows: 0.2fr 1fr;
+    grid-template-columns: 2.5fr 10fr 2.5fr;
     grid-gap: 10px;
-    grid-template-areas: 'hd hd' 'nv cn';
+    grid-template-areas: 'hd hd hd' 'nv cn sb';
 }
 
 div, nav {
