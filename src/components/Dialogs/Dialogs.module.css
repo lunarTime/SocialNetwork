@@ -14,3 +14,10 @@
     color: gold;
 }
 
+.messages textarea{
+    margin-top: 10px;
+}
+.messages hr{
+    border-color: black;
+}
+

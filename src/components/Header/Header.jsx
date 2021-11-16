@@ -5,6 +5,7 @@ const Header = () => {
    return(
         <header className={s.header}>
             <img
+                alt="logo"
                 src='http://simpleicon.com/wp-content/uploads/rocket.png'
             />
         </header>
