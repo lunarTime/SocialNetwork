@@ -2,17 +2,27 @@
     color: gold;
     font-size: 18px;
     border: 1px solid black;
-    width: 50%;
+    width: inherit;
     margin: 5px;
     padding: 5px;
 }
 
-.item .msg {
+
+.item .msg{
     display: inline-block;
 }
 
-.item .image {
+.item .image,
+.item .commentContent{
     display: inline-block;
+}
+
+.item .image{
+    align-content: inherit;
+}
+
+.humanName{
+    color: maroon;
 }
 
 .item .likes {

@@ -4,16 +4,18 @@ let store = {
             posts: [
                 {
                     id: 1,
-                    message: "Hi there",
-                    lCount: 1
+                    name: "John",
+                    message: "Why I have a million likes???",
+                    lCount: 1000000
                 },
                 {
                     id: 2,
-                    message: "Hi !!!",
+                    name: "Michael",
+                    message: "This is a second comment of this post",
                     lCount: 3
                 }
             ],
-            newPostText: 'any message...'
+            newPostText: 'type any message...'
         },
         dialogsPage: {
             dialogsData: [
@@ -33,18 +35,38 @@ let store = {
             msgData: [
                 {
                     id: 1,
-                    message: 'Hi'
+                    message: 'Message 1'
                 },
                 {
                     id: 2,
-                    message: 'Hi there'
+                    message: 'Message 2'
                 },
                 {
                     id: 3,
-                    message: 'Hi there, guys'
+                    message: 'Message 3'
                 }
             ]
         }
+    },
+    dispatch(action) {
+        if (action.type === 'addPost') {
+            let newPost = {
+                id: 5,
+                name: "NEW USER",
+                message: this._state.profilePage.newPostText,
+                lCount: 0
+            };
+            if (newPost.message === '') {
+                return false;
+            }
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'updatePostText')  {
+            this._state.profilePage.newPostText = action.text;
+            this._callSubscriber(this._state);
+        }
+
     },
     getState() {
         return this._state;
@@ -52,27 +74,21 @@ let store = {
     _callSubscriber() {
         console.log('State changed');
     },
-    addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            lCount: 0
-        };
-        if (newPost.message === '') {
-            return false;
-        }
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    updatePostText(text) {
-        this._state.profilePage.newPostText = text;
-        this._callSubscriber(this._state);
-    },
     subscribe(observer) {
         this._callSubscriber = observer;
     }
 }
 
+export const addPostActionCreator = () => {
+    return {
+        type: 'addPost'
+    }
+}
+export const updatePostTextActionCreator = (text) => {
+    return {
+        type: 'updatePostText',
+        text: text
+    }
+}
 export default store;
 window.store = store;

@@ -1,25 +1,29 @@
 import React from 'react';
 import s from './Posts.module.css';
 import Post from "./Post/Post";
+import {addPostActionCreator, updatePostTextActionCreator} from "../../../Redux/state";
 
 const Posts = (props) => {
 
     let postsElements =
-        props.posts.map(p => <Post
-            id={p.id}
-            message={p.message}
-            likes={p.lCount}
-        />)
+        props.posts.map(p =>
+            <Post
+                id={p.id}
+                name={p.name}
+                message={p.message}
+                likes={p.lCount}
+            />)
 
     let newPostEl = React.createRef();
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch(addPostActionCreator());
     }
 
     let postChange = () => {
         let text = newPostEl.current.value;
-        props.updatePostText(text);
+        let action = updatePostTextActionCreator(text);
+        props.dispatch(action);
     }
 
     return (
@@ -30,6 +34,7 @@ const Posts = (props) => {
                     ref={newPostEl}
                     value={props.newPostText}
                 />
+
                 <button
                     onClick={addPost}>
                     Add post
@@ -44,8 +49,3 @@ const Posts = (props) => {
 }
 
 export default Posts;
-
-/**
-let text = newPostEl.current.value;
-props.addPost(text);
- **/
