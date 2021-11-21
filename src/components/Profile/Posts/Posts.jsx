@@ -33,6 +33,7 @@ const Posts = (props) => {
                     onChange={postChange}
                     ref={newPostEl}
                     value={props.newPostText}
+                    placeholder='Type your message...'
                 />
 
                 <button
