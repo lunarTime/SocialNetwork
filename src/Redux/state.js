@@ -1,7 +1,5 @@
-const ADDPOST = 'addPost';
-const UPDATEPOSTTEXT = 'updatePostText';
-const UPDATEMESSAGETEXT = 'updateMessageText';
-const SENDMESSAGE = 'sendMessage';
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
 
 let store = {
     _state: {
@@ -55,35 +53,9 @@ let store = {
         }
     },
     dispatch(action) {
-        if (action.type === ADDPOST) {
-            let newPost = {
-                id: 5,
-                name: "NEW USER",
-                message: this._state.profilePage.newPostText,
-                lCount: 0
-            };
-
-            if (newPost.message === '') {
-                return false;
-            }
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-
-        } else if (action.type === UPDATEPOSTTEXT)  {
-            this._state.profilePage.newPostText = action.text;
-            this._callSubscriber(this._state);
-
-        } else if (action.type === UPDATEMESSAGETEXT) {
-            this._state.dialogsPage.newMessageText = action.body;
-            this._callSubscriber(this._state);
-            
-        } else if (action.type === SENDMESSAGE) {
-            let body = this._state.dialogsPage.newMessageText;
-            this._state.dialogsPage.newMessageText = '';
-            this._state.dialogsPage.msgData.push({id: 6, message: body})
-            this._callSubscriber(this._state);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._callSubscriber(this._state);
     },
     getState() {
         return this._state;
@@ -96,29 +68,4 @@ let store = {
     }
 }
 
-export const updateMessageBodyCreator = (body) => {
-    return {
-        type: 'updateMessageText',
-        body: body
-    }
-}
-
-export const sendMessageCreator = () => {
-    return {
-        type: 'sendMessage'
-    }
-}
-
-export const addPostActionCreator = () => {
-    return {
-        type: 'addPost'
-    }
-}
-
-export const updatePostTextActionCreator = (text) => {
-    return {
-        type: 'updatePostText',
-        text: text
-    }
-}
 export default store;

@@ -1,12 +1,11 @@
 import React from 'react';
 import s from './Posts.module.css';
 import Post from "./Post/Post";
-import {addPostActionCreator, updatePostTextActionCreator} from "../../../Redux/state";
+import {addPostActionCreator, updatePostTextActionCreator} from "../../../Redux/profileReducer";
 
 const Posts = (props) => {
 
-    let postsElements =
-        props.posts.map(p =>
+    let postsElements = props.posts.map(p =>
             <Post
                 id={p.id}
                 name={p.name}
